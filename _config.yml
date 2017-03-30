@@ -9,7 +9,7 @@ owner: Ralph Forgeon # or company name
 first_published: 2017 # if migrating another site, the year of your first publish
 email: rforgeon@gmail.com #doesn't change contact button
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://rforgeon.github.io" # the base hostname & protocol for your site
+url: "http://www.forgeon.info" # the base hostname & protocol for your site
 
 google_fonts: "Lato:300,400,700,300italic,700italic|Raleway"
 

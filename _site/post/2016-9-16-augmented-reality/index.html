@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!--
+  Original Design: Spectral by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+  Jekyll build mod
+-->
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Toying with Augmented Reality</title>
+  <meta name="description" content="">
+  <!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+  <link rel="canonical" href="http://localhost:4000/post/2016-9-16-augmented-reality/">
+  <link rel="stylesheet" href="/css/main.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
+  <link rel="alternate" type="application/rss+xml" title="Ralph Forgeon" href="http://localhost:4000/feed.xml">
+</head>
+
+
+  <body>
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+      <!-- Header -->
+<header id="header">
+  <h1><a href="/index.html">Ralph Forgeon</a></h1>
+  <nav id="nav">
+    <ul>
+      <li class="special">
+        <a href="#menu" class="menuToggle"><span>Menu</span></a>
+        <div id="menu">
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <br>
+            
+            
+            <li><a href="/portfolio/1-myTopStop/">My Top Stop</a></li>
+            
+            
+            
+            <li><a href="/portfolio/2-productively/">Productively</a></li>
+            
+            
+            
+            <li><a href="/portfolio/3-lickLink/">Lick Link</a></li>
+            
+            
+            <br>
+            <li><a href="/posts.html">My Posts</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+      <article id="main">
+
+  <header>
+    <h2>Toying with Augmented Reality</h2>
+  </header>
+
+  <section class="wrapper style5">
+    <div class="inner">
+      <div style="text-align:center; "><img src="https://cldup.com/yKNshWjCfz.png" /></div>
+
+<p><br /></p>
+
+<p>I started getting interested in augmented reality when a learned about Magic Leap (or more so the idea for Magic Leap) back in the early 2015.</p>
+
+<p>Magic Leaps founder, Rony Abovitz, had this obscure demo app out. Unfortunately, it no longer exists. The app provided you with a link to a print out (later to find out this is a target). When you point your phone’s camera at the target, an animated robot popped up, looked at you, and made some screeching robot noises before disappearing again.</p>
+
+<p>After looking into it further. I found that Qualcomm had developed some software for generating a connection to these targets. This was paired with Unity (a game development software).</p>
+
+<p>Since both a Vuforia and Unity starter account is free, I hopped in and started hacking.</p>
+
+<p>The best beginner resource I recommend is a tutorial found on <a href="http://www.dannygoodayle.com/2013/03/01/making-your-first-project-with-unity-and-augmented-reality/">Danny Goodayle’s blog</a>.</p>
+
+<p>From there, I started with <strong>static targets</strong>, played with <strong>dynamic targets</strong>, then got into <strong>facial tracking</strong>. Take a look 👀</p>
+
+<h2 id="static-target">Static Target</h2>
+
+<div style="text-align:center;">
+
+  <!-- "Video For Everybody" http://camendesign.com/code/video_for_everybody -->
+  <video controls="controls" width="450" height="400">
+    <source src="https://instagram.fsnc1-2.fna.fbcdn.net/t50.2886-16/11773027_1477125979265254_973512356_n.mp4" type="video/mp4" />
+    <object type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" width="450" height="400">
+      <param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" />
+      <param name="allowFullScreen" value="true" />
+      <param name="wmode" value="transparent" />
+      <param name="flashVars" value="config={'playlist':[{'url':'https%3A%2F%2Finstagram.fsnc1-2.fna.fbcdn.net%2Ft50.2886-16%2F11773027_1477125979265254_973512356_n.mp4','autoPlay':false}]}" />
+      <span title="No video playback capabilities, please download the video below">Coke-a-cola</span>
+    </object>
+  </video>
+
+    <!-- "Video For Everybody" http://camendesign.com/code/video_for_everybody -->
+  <video controls="controls" poster="https://instagram.fsnc1-2.fna.fbcdn.net/t51.2885-15/e15/11881621_506472989517048_1110307166_n.jpg?ig_cache_key=MTA2ODE4NTIxMDMzNDE1NDQ5Mw%3D%3D.2" width="500" height="400">
+    <source src="https://instagram.fsnc1-2.fna.fbcdn.net/t50.2886-16/11948815_522770874541941_470873750_n.mp4" type="video/mp4" />
+    <object type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" width="500" height="400">
+      <param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" />
+      <param name="allowFullScreen" value="true" />
+      <param name="wmode" value="transparent" />
+      <param name="flashVars" value="config={'playlist':['https%3A%2F%2Finstagram.fsnc1-2.fna.fbcdn.net%2Ft51.2885-15%2Fe15%2F11881621_506472989517048_1110307166_n.jpg%3Fig_cache_key%3DMTA2ODE4NTIxMDMzNDE1NDQ5Mw%253D%253D.2',{'url':'https%3A%2F%2Finstagram.fsnc1-2.fna.fbcdn.net%2Ft50.2886-16%2F11948815_522770874541941_470873750_n.mp4','autoPlay':false}]}" />
+      <img alt="Big Buck Bunny" src="https://instagram.fsnc1-2.fna.fbcdn.net/t51.2885-15/e15/11881621_506472989517048_1110307166_n.jpg?ig_cache_key=MTA2ODE4NTIxMDMzNDE1NDQ5Mw%3D%3D.2" width="500" height="400" title="No video playback capabilities, please download the video below" />
+    </object>
+  </video>
+  <br />
+
+  <!-- "Video For Everybody" http://camendesign.com/code/video_for_everybody -->
+  <video controls="controls" poster="https://instagram.fsnc1-2.fna.fbcdn.net/t51.2885-15/e15/12362486_1497196783917591_145230436_n.jpg?ig_cache_key=MTE0MTYyNTc1MzI4MTY5NTMzMg%3D%3D.2" width="500" height="400">
+  	<source src="https://instagram.fsnc1-2.fna.fbcdn.net/t50.2886-16/12368959_1017758238282931_1901270271_n.mp4" type="video/mp4" />
+  	<img alt="Starbucks AR" src="https://instagram.fsnc1-2.fna.fbcdn.net/t51.2885-15/e15/12362486_1497196783917591_145230436_n.jpg?ig_cache_key=MTE0MTYyNTc1MzI4MTY5NTMzMg%3D%3D.2" width="250" height="300" title="No video playback capabilities, please download the video below" />
+  </video>
+  <br />
+
+
+</div>
+
+<h2 id="dynamic-target">Dynamic Target</h2>
+
+<div style="text-align:center;">
+  <video controls="controls" width="450" height="400">
+  	<source src="https://instagram.fsnc1-2.fna.fbcdn.net/t50.2886-16/12461691_1194397447255757_1386843048_n.mp4" type="video/mp4" />
+  	<span title="No video playback capabilities, please download the video below">Coke-a-cola</span>
+  </video>
+  <br />
+  <video controls="controls" width="450" height="400">
+  	<source src="https://static.everyplay.com/everyplay/videos/30925389/24898904/m31-1500.mp4" type="video/mp4" />
+  	<span title="No video playback capabilities, please download the video below">Coke-a-cola</span>
+  </video>
+</div>
+
+<h2 id="facial-tracking">Facial Tracking</h2>
+
+<div style="text-align:center;">
+
+  <video controls="controls" width="450" height="400">
+  	<source src="https://static.everyplay.com/everyplay/videos/30925389/25850467/m31-1500.mp4" type="video/mp4" />
+  	<span title="No video playback capabilities, please download the video below">Coke-a-cola</span>
+  </video>
+
+
+  <video controls="controls" width="450" height="400">
+  	<source src="https://static.everyplay.com/everyplay/videos/30925389/27170009/m31-1500.mp4" type="video/mp4" />
+  	<span title="No video playback capabilities, please download the video below">Coke-a-cola</span>
+  </video>
+
+</div>
+
+    </div>
+  </section>
+
+</article>
+
+
+      <!-- Footer -->
+<footer id="footer">
+  <ul class="icons">
+    
+    
+    
+    <li><a target="_blank" href="https://twitter.com/rjforgeon" class="icon fa-twitter"
+           ><span class="label">twitter</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="https://github.com/rforgeon" class="icon fa-github"
+           ><span class="label">github</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="https://linkedin.com/in/forgeon" class="icon fa-linkedin-square"
+           ><span class="label">linkedin-square</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="mailto:rforgeon@gmail.com" class="icon fa-envelope-o"
+           ><span class="label">E-mail</span></a></li>
+    
+    
+    
+  </ul>
+  <ul class="copyright">
+    <li>&copy; 
+    
+      
+      
+    
+    2017
+    Ralph Forgeon</li>
+    <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+    <!-- <li>Built with: <a href="http://jekyllrb.com" target="_blank">Jekyll</a></li> -->
+  </ul>
+</footer>
+
+
+      <!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollex.min.js"></script>
+<script src="/js/jquery.scrolly.min.js"></script>
+<script src="/js/skel.min.js"></script>
+<script src="/js/util.js"></script>
+<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+<script src="/js/main.js"></script>
+
+
+    </div>
+
+  </body>
+
+</html>

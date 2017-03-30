@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!--
+  Original Design: Spectral by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+  Jekyll build mod
+-->
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lick Link</title>
+  <meta name="description" content="  ">
+  <!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+  <link rel="canonical" href="http://localhost:4000/portfolio/3-lickLink/">
+  <link rel="stylesheet" href="/css/main.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
+  <link rel="alternate" type="application/rss+xml" title="Ralph Forgeon" href="http://localhost:4000/feed.xml">
+</head>
+
+
+  <body>
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+      <!-- Header -->
+<header id="header">
+  <h1><a href="/index.html">Ralph Forgeon</a></h1>
+  <nav id="nav">
+    <ul>
+      <li class="special">
+        <a href="#menu" class="menuToggle"><span>Menu</span></a>
+        <div id="menu">
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <br>
+            
+            
+            <li><a href="/portfolio/1-myTopStop/">My Top Stop</a></li>
+            
+            
+            
+            <li><a href="/portfolio/2-productively/">Productively</a></li>
+            
+            
+            
+            <li><a href="/portfolio/3-lickLink/">Lick Link</a></li>
+            
+            
+            <br>
+            <li><a href="/posts.html">My Posts</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+      <article id="main">
+
+  <header>
+    <h2>Lick Link</h2>
+  </header>
+
+  <section class="wrapper style5">
+    <div class="inner">
+      <div style="text-align:center;">
+  <iframe width="438" height="930" src="//invis.io/WTARTIU9S" frameborder="0" allowfullscreen=""></iframe>
+</div>
+
+<p><br />
+<br /></p>
+
+<p>The Lick Link platform allows influencers to support brands with individualized links and allows brands to sponsor influencers with a percentage of sales.</p>
+
+<p><br />
+<br /></p>
+
+<h2 id="problems-️-solutions">Problems ➡️ Solutions</h2>
+
+<div style="text-align:center; -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0))); "><img src="http://i.giphy.com/l0MYM98IwMYDIn1fO.gif" /></div>
+
+<h2 id="problem-a-using-uuids">Problem (A): Using UUID’s</h2>
+
+<p>I use ID’s when communicating with Google Analytics so I wanted to enhance my security slightly. I say slightly, because they main benefit is reducing the possibility of someone simply guessing with brute force. That being said, I implement further protection with using ID’s.</p>
+
+<p><strong>Traditional ID</strong></p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">ID</span>  <span class="no">Value</span>
+<span class="o">--</span>  <span class="o">-----</span>
+<span class="mi">1</span>   <span class="c1">#Apple</span>
+<span class="mi">2</span>   <span class="c1">#Orange</span>
+<span class="mi">3</span>   <span class="c1">#Pear</span>
+<span class="mi">4</span>   <span class="c1">#Mango</span>
+<span class="p">.</span><span class="nf">.</span> <span class="n">to</span> <span class="no">GUID</span> <span class="n">keys</span><span class="o">.</span>
+</code></pre>
+</div>
+<p><strong>UUID</strong></p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">ID</span>                                    <span class="no">Value</span>
+<span class="o">------------------------------------</span>  <span class="o">-----</span>
+<span class="s1">'C87FC84A-EE47-47EE-842C-29E969AC5131'</span>  <span class="c1">#Apple</span>
+<span class="s1">'2A734AE4-E0EF-4D77-9F84-51A8365AC5A0'</span>  <span class="c1">#Orange</span>
+<span class="s1">'70E2E8DE-500E-4630-B3CB-166131D35C21'</span>  <span class="c1">#Pear</span>
+<span class="s1">'15ED815C-921C-4011-8667-7158982951EA'</span>  <span class="c1">#Mango</span>
+</code></pre>
+</div>
+
+<h2 id="solution-a-using-uuids">Solution (A): Using UUID’s</h2>
+
+<p>The first issue I ran into when starting my UUID implementation was the fact that I already had a database setup with traditional incremental ID’s.</p>
+
+<p>When using a PostgreSQL server, the database needs to be primed for UUID’s</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ rails g migration enable_uuid_extension
+</code></pre>
+</div>
+
+<p>Once this is done, you can then create your model.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ rails g model post
+</code></pre>
+</div>
+
+<p>Note the migration now includes <strong>:uuid</strong> as the primary key.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CreatePosts</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
+  <span class="k">def</span> <span class="nf">change</span>
+    <span class="n">create_table</span> <span class="ss">:posts</span><span class="p">,</span> <span class="ss">id: :uuid</span>  <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:title</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:body</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<h2 id="results">Results</h2>
+
+<p>At the cost of a small increase in database lookup work, this UUID primary key helped make my platform more secure.</p>
+
+<p><br /></p>
+
+<h2 id="more-coming-soon">More Coming Soon!</h2>
+
+<p>See how I worked with React + Redux in my <a href="http://www.forgeon.info/portfolio/1-myTopStop/">ride sharing discovery app 👉</a></p>
+
+    </div>
+  </section>
+
+</article>
+
+
+      <!-- Footer -->
+<footer id="footer">
+  <ul class="icons">
+    
+    
+    
+    <li><a target="_blank" href="https://twitter.com/rjforgeon" class="icon fa-twitter"
+           ><span class="label">twitter</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="https://github.com/rforgeon" class="icon fa-github"
+           ><span class="label">github</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="https://linkedin.com/in/forgeon" class="icon fa-linkedin-square"
+           ><span class="label">linkedin-square</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="mailto:rforgeon@gmail.com" class="icon fa-envelope-o"
+           ><span class="label">E-mail</span></a></li>
+    
+    
+    
+  </ul>
+  <ul class="copyright">
+    <li>&copy; 
+    
+      
+      
+    
+    2017
+    Ralph Forgeon</li>
+    <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+    <!-- <li>Built with: <a href="http://jekyllrb.com" target="_blank">Jekyll</a></li> -->
+  </ul>
+</footer>
+
+
+      <!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollex.min.js"></script>
+<script src="/js/jquery.scrolly.min.js"></script>
+<script src="/js/skel.min.js"></script>
+<script src="/js/util.js"></script>
+<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+<script src="/js/main.js"></script>
+
+
+    </div>
+
+  </body>
+
+</html>

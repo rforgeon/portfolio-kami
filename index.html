@@ -1,0 +1,215 @@
+---
+layout: landing
+---
+				<!-- Banner -->
+				<!-- <video loop muted autoplay poster="images/blur.mp4" >
+						<source src="images/blur.mp4" type="video/mp4">
+				</video> -->
+
+					<section id="banner">
+
+
+
+						<div class="inner">
+							<h2>{{ site.title }}</h2>
+							<p>{{ site.description | markdownify }}</p>
+							<ul class="icons">
+								{% for socloc in site.social %}
+								{% if socloc[1] %}
+								{% if socloc[0] == 'email' %}
+								<li><a target="_blank" href="{{ socloc[1] }}" class="icon fa-envelope-o"
+											 ><span class="label">E-mail</span></a></li>
+								{% else %}
+								<li><a target="_blank" href="{{ socloc[1] }}" class="icon fa-{{ socloc[0] }}"
+											 ><span class="label">{{ socloc[0] }}</span></a></li>
+								{% endif %}
+								{% endif %}
+								{% endfor %}
+							</ul>
+							<ul class="actions">
+								<li><a href="mailto:rforgeon@gmail.com" target="_blank" class="button special">Contact</a></li>
+							</ul>
+						</div>
+						<a href="#one" class="more scrolly">View Projects</a>
+
+					</section>
+
+				<!-- One -->
+					<!-- <section id="one" class="wrapper style1 special">
+						<div class="inner">
+							<header class="major">
+								<h2>Arcu aliquet vel lobortis ata nisl<br />
+								eget augue amet aliquet nisl cep donec</h2>
+								<p>Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend<br />
+								fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.</p>
+							</header>
+							<ul class="icons major">
+								<li><span class="icon fa-diamond major style1"><span class="label">Lorem</span></span></li>
+								<li><span class="icon fa-heart-o major style2"><span class="label">Ipsum</span></span></li>
+								<li><span class="icon fa-code major style3"><span class="label">Dolor</span></span></li>
+							</ul>
+						</div>
+					</section> -->
+
+					<!-- <div class="work">
+				    <h2>My Work</h2>
+				    {% for project in site.portfolio limit:3 %}
+				    <div class="spotlight">
+				      <div class="project-thumb">
+				        <a href="{{ project.url | prepend: site.baseurl }}">
+				          <img src="{{ project.thumbnail-path }}" alt="{{ project.title }}"/>
+				        </a>
+				      </div>
+				      <div class="project-description">
+				        <a href="{{ project.url | prepend: site.baseurl }}"><strong>{{ project.title }}</strong></a>
+				        <p>{{ project.short-description }}</p>
+				      </div>
+				    </div>
+				    {% endfor %}
+				  </div> -->
+
+				<!-- Two -->
+					<section id="two" class="wrapper alt style2">
+						<section class="spotlight">
+								<div class="image" >
+									<a href="{{ site.portfolio[0].url | prepend: site.baseurl }}">
+										<img  src="{{ site.portfolio[0].thumbnail-path }}" alt="{{ site.portfolio[0].title }}"/>
+									</a>
+								</div>
+								<div class="content">
+									<a href="{{ site.portfolio[0].url | prepend: site.baseurl }}">
+										<h2>{{ site.portfolio[0].title }}</h2>
+										<p> {{ site.portfolio[0].short-description }} </p>
+										<p style="margin-top:-20px;font-size:10px">View Project Details</p>
+									</a>
+								</div>
+						</section>
+
+						<section class="spotlight">
+								<div class="image2">
+									<a href="{{ site.portfolio[1].url | prepend: site.baseurl }}">
+										<img src="{{ site.portfolio[1].thumbnail-path }}" alt="{{ site.portfolio[1].title }}"/>
+									</a>
+								</div>
+							<div class="content">
+								<a href="{{ site.portfolio[1].url | prepend: site.baseurl }}">
+									<h2>{{ site.portfolio[1].title }}</h2>
+									<p>{{ site.portfolio[1].short-description }}</p>
+									<p style="margin-top:-20px;font-size:10px">View Project Details</p>
+								</a>
+							</div>
+						</section>
+
+						<section class="spotlight">
+								<div class="image" style="padding:20px;">
+									<a href="{{ site.portfolio[2].url | prepend: site.baseurl }}">
+										<img src="{{ site.portfolio[2].thumbnail-path }}" alt="{{ site.portfolio[1].title }}"/>
+									</a>
+								</div>
+							<div class="content">
+								<a href="{{ site.portfolio[2].url | prepend: site.baseurl }}">
+									<h2>{{ site.portfolio[2].title }}</h2>
+									<p>{{ site.portfolio[2].short-description }}</p>
+									<p style="margin-top:-20px;">{{ site.portfolio[2].short-description-line2 }}</p>
+									<p style="margin-top:-20px;font-size:10px">{{ site.portfolio[2].short-description-line3 }}</p>
+								</a>
+							</div>
+						</section>
+					</section>
+
+				<!-- Three -->
+					<section id="three" class="wrapper style3 special">
+						<div class="post-preview">
+							<header class="major">
+								<h2>My Posts</h2>
+								<p>Here are some more things I'm working on <br />
+								or thinking about.</p>
+							</header>
+							<ul class="features">
+								<!-- <li class="icon fa-paper-plane-o">
+									<h3>Arcu accumsan</h3>
+									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+								</li>
+								<li class="icon fa-laptop">
+									<h3>Ac Augue Eget</h3>
+									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+								</li>
+								<li class="icon fa-code">
+									<h3>Mus Scelerisque</h3>
+									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+								</li>
+								<li class="icon fa-headphones">
+									<h3>Mauris Imperdiet</h3>
+									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+								</li>
+								<li class="icon fa-heart-o">
+									<h3>Aenean Primis</h3>
+									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+								</li>
+								<li class="icon fa-flag-o">
+									<h3>Tortor Ut</h3>
+									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+								</li> -->
+								{% for post in paginator.posts limit:4 %}
+				      <li class="post-teaser">
+				        <header>
+				          <h3>
+				            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+				              {{ post.title }}
+				            </a>
+				          </h3>
+				          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+				            <img src={{post.feature-img}}>
+				          </a>
+				          <p class="meta">
+				            {{ post.date | date: "%B %-d, %Y" }}
+				          </p>
+				        </header>
+				        <div class="excerpt">
+				          {{ post.excerpt | | strip_html | strip_newlines | truncate: 120 }}
+				        </div>
+				        <a href="{{ post.url | prepend: site.baseurl }}">
+				          {{ site.theme_settings.str_continue_reading }}
+				        </a>
+				      </li>
+				      {% endfor %}
+							</ul>
+						</div>
+
+						{% if paginator.total_pages > 1 %}
+					  <div class="pagination">
+					    {% if paginator.previous_page %}
+					    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="button" >
+					      <i class="fa fa-chevron-left"></i>
+					      {{ site.theme_settings.str_prev }}
+					    </a>
+					    {% endif %}
+					    {% if paginator.next_page %}
+					    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="button" >
+					      {{ site.theme_settings.str_next }}
+					      <i class="fa fa-chevron-right"></i>
+					    </a>
+					    {% endif %}
+					  </div>
+					  {% endif %}
+
+						<h3>
+							<a class="post-link" href="/posts.html">
+								View All Posts 👉
+							</a>
+						</h3>
+
+					</section>
+
+				<!-- CTA -->
+					<section id="cta" class="wrapper style4">
+						<div class="inner">
+							<header>
+								<h2>Thank you for visiting.</h2>
+								<p>Feel free to say hello!</p>
+							</header>
+							<ul class="actions vertical">
+								<li><a href="mailto:rforgeon@gmail.com" target="_blank" class="button fit special">Contact</a></li>
+							</ul>
+						</div>
+					</section>

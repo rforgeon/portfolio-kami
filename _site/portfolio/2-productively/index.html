@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<!--
+  Original Design: Spectral by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+  Jekyll build mod
+-->
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Productively</title>
+  <meta name="description" content="">
+  <!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+  <link rel="canonical" href="http://localhost:4000/portfolio/2-productively/">
+  <link rel="stylesheet" href="/css/main.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
+  <link rel="alternate" type="application/rss+xml" title="Ralph Forgeon" href="http://localhost:4000/feed.xml">
+</head>
+
+
+  <body>
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+      <!-- Header -->
+<header id="header">
+  <h1><a href="/index.html">Ralph Forgeon</a></h1>
+  <nav id="nav">
+    <ul>
+      <li class="special">
+        <a href="#menu" class="menuToggle"><span>Menu</span></a>
+        <div id="menu">
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <br>
+            
+            
+            <li><a href="/portfolio/1-myTopStop/">My Top Stop</a></li>
+            
+            
+            
+            <li><a href="/portfolio/2-productively/">Productively</a></li>
+            
+            
+            
+            <li><a href="/portfolio/3-lickLink/">Lick Link</a></li>
+            
+            
+            <br>
+            <li><a href="/posts.html">My Posts</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+      <article id="main">
+
+  <header>
+    <h2>Productively</h2>
+  </header>
+
+  <section class="wrapper style5">
+    <div class="inner">
+      <div style="text-align:center; "><img src="https://cldup.com/xgdRPXmNUo.png" /></div>
+
+<p>The Productively timer helps users sustain a productive, 9 hour work day while following <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoro</a> time management.</p>
+
+<h3 style="color:blue; text-align:center;"><a href="http://bit.ly/productivelyDL" download="">⬇️ Download for Mac!</a></h3>
+<p style="margin-top:-25px;font-size:10px;text-align:center">then: ctrl click &gt; open </p>
+
+<p><br />
+<br />
+<br />
+<br /></p>
+
+<h2 id="problems-️-solutions">Problems ➡️ Solutions</h2>
+
+<div style="text-align:center; -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0))); "><img style="width:40vw" src="https://cldup.com/i_g1wzXF3l.gif" /></div>
+
+<h2 id="problem-a-organizing-my-reducers">Problem (A): Organizing My Reducers</h2>
+
+<p>I started with one <strong>Timer</strong> reducer, used to control multiple types of timers (i.e. a <strong>work timer</strong>, <strong>short break timer</strong>, and <strong>long break timer</strong>).</p>
+
+<p>I was initially switching between these timers in a long conditional statement in the <strong>Timer</strong> component. However, this code had a poor <a href="https://en.wikipedia.org/wiki/Code_smell">smell</a>.</p>
+
+<div style="text-align:center; -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0))); "><img style="width:25vw;" src="http://i.giphy.com/mpxvACn6oda7e.gif" /></div>
+<p><br /></p>
+
+<p>My reducer was very long, and included many actions that would be repetitive to each timer.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">defaultSate</span> <span class="o">=</span><span class="p">{</span>
+  <span class="na">seconds</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span>
+  <span class="na">isRunning</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">cycleIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="na">initTimer</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">currentTimer</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="na">onBreak</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">totalTime</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="na">timeSinceInit</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">timer</span><span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">defaultState</span><span class="p">,</span> <span class="nx">action</span><span class="p">){</span>
+
+  <span class="kr">const</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">action</span><span class="p">.</span><span class="nx">currentTimer</span><span class="p">;</span>
+
+  <span class="k">switch</span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">){</span>
+
+
+    <span class="k">case</span> <span class="s1">'INIT_WORK_TIMER'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span>
+      <span class="p">}</span>
+
+    <span class="k">case</span> <span class="s1">'INIT_SHORT_BREAK_TIMER'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span>
+      <span class="p">}</span>
+
+    <span class="k">case</span> <span class="s1">'INIT_LONG_BREAK_TIMER'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span>
+      <span class="p">}</span>
+
+    <span class="k">case</span> <span class="s1">'INIT_TIMER'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span>
+      <span class="p">}</span>
+
+    <span class="k">case</span> <span class="s1">'INCREMENT_TOTAL_TIME'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span>
+      <span class="p">}</span>
+
+    <span class="k">case</span> <span class="s1">'INCREMENT_TIME_SINCE_INIT'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span>
+      <span class="p">}</span>
+
+    <span class="k">case</span> <span class="s1">'RESET_TOTAL_TIME'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span>
+      <span class="p">}</span>
+
+    <span class="k">case</span> <span class="s1">'DECREMENT_TIMER'</span><span class="err">:</span>
+      <span class="k">return</span> <span class="p">[</span>
+      <span class="p">...</span>
+      <span class="p">]</span>
+
+    <span class="k">case</span> <span class="s1">'PAUSE_TIMER'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">[</span>
+      <span class="p">...</span>
+      <span class="p">]</span>
+
+    <span class="k">case</span> <span class="s1">'RESET_TIMER'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">[</span>
+        <span class="p">...</span>
+      <span class="p">]</span>
+
+    <span class="k">case</span> <span class="s1">'INCREMENT_CYCLE_INDEX'</span><span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">[</span>
+        <span class="p">...</span>
+      <span class="p">]</span>
+
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<h2 id="solution-a-organizing-my-reducers">Solution (A): Organizing My Reducers</h2>
+
+<p>I proceeded to create a Master Timer that includes an array of “timerItem” objects.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">workTimerItem</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">seconds</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span>
+  <span class="na">isRunning</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">cycleIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="na">id</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">shortBreakTimerItem</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">seconds</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+  <span class="na">isRunning</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">cycleIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="na">id</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">longBreakTimerItem</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">seconds</span><span class="p">:</span> <span class="mi">1800</span><span class="p">,</span>
+  <span class="na">isRunning</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">cycleIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="na">id</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">timer</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">timerItems</span><span class="p">:</span> <span class="p">[</span><span class="nx">workTimerItem</span><span class="p">,</span> <span class="nx">shortBreakTimerItem</span><span class="p">,</span> <span class="nx">longBreakTimerItem</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This has allowed me to more easily move between my different timers. The new reducers are now split into a <strong>“timerItem”</strong> Reducer and <strong>“timer”</strong> Reducer.</p>
+
+<p><strong>“timerItem” Reducer 👇</strong></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">workTimerItem</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">seconds</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span>
+  <span class="na">isRunning</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">cycleIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="na">id</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">shortBreakTimerItem</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">seconds</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+  <span class="na">isRunning</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">cycleIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="na">id</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">longBreakTimerItem</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">seconds</span><span class="p">:</span> <span class="mi">1800</span><span class="p">,</span>
+  <span class="na">isRunning</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">cycleIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="na">id</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">timer</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">timerItems</span><span class="p">:</span> <span class="p">[</span><span class="nx">workTimerItem</span><span class="p">,</span> <span class="nx">shortBreakTimerItem</span><span class="p">,</span> <span class="nx">longBreakTimerItem</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">timerItem</span><span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">timerItems</span><span class="p">,</span><span class="nx">action</span><span class="p">){</span>
+  <span class="kr">const</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">action</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+
+  <span class="k">switch</span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">){</span>
+
+    <span class="k">case</span> <span class="s1">'DECREMENT_TIMER'</span><span class="err">:</span>
+      <span class="k">return</span> <span class="p">[</span>
+        <span class="p">...</span>
+      <span class="p">]</span>
+
+    <span class="k">case</span> <span class="s1">'PAUSE_TIMER'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">[</span>
+        <span class="p">...</span>
+      <span class="p">]</span>
+
+    <span class="k">case</span> <span class="s1">'RESET_TIMER'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">[</span>
+        <span class="p">...</span>
+      <span class="p">]</span>
+
+    <span class="k">case</span> <span class="s1">'INCREMENT_CYCLE_INDEX'</span><span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">[</span>
+        <span class="p">...</span>
+      <span class="p">]</span>
+
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>“timer” Reducer 👇</strong></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">defaultState</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">initTimer</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">currentTimer</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="na">onBreak</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">totalTime</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="na">timeSinceInit</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">timer</span><span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">defaultState</span><span class="p">,</span> <span class="nx">action</span><span class="p">){</span>
+
+  <span class="kr">const</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">action</span><span class="p">.</span><span class="nx">currentTimer</span><span class="p">;</span>
+
+  <span class="k">switch</span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">){</span>
+
+
+    <span class="k">case</span> <span class="s1">'INIT_WORK_TIMER'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span>
+      <span class="p">}</span>
+
+    <span class="k">case</span> <span class="s1">'INIT_SHORT_BREAK_TIMER'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span>
+      <span class="p">}</span>
+
+    <span class="k">case</span> <span class="s1">'INIT_LONG_BREAK_TIMER'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span>
+      <span class="p">}</span>
+
+    <span class="k">case</span> <span class="s1">'INIT_TIMER'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span>
+      <span class="p">}</span>
+
+    <span class="k">case</span> <span class="s1">'INCREMENT_TOTAL_TIME'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span>
+      <span class="p">}</span>
+
+    <span class="k">case</span> <span class="s1">'INCREMENT_TIME_SINCE_INIT'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span>
+      <span class="p">}</span>
+
+    <span class="k">case</span> <span class="s1">'RESET_TOTAL_TIME'</span> <span class="err">:</span>
+
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span>
+      <span class="p">}</span>
+
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h2 id="results">Results</h2>
+
+<p>This refactoring has made my code much more logical and organized.</p>
+
+<p><br />
+<br /></p>
+
+<h2 id="project-design">Project Design</h2>
+
+<div style="text-align:center; -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0))); "><img src="http://i.giphy.com/3o6ZteZyWPqKgynJGU.gif" /></div>
+
+<p><br /></p>
+
+<h2 id="-ux">🔎 UX</h2>
+
+<p>I took a <a href="https://jtbd.info/replacing-the-user-story-with-the-job-story-af7cdee10c27#.gbjooeabd">Job Story</a> approach to my user experience.</p>
+
+<p><img src="https://cldup.com/zbM_T4eLmh.png" alt="" /></p>
+
+<h2 id="-visual">👀 Visual</h2>
+
+<p>My first quick sketch was very simple and only implemented the final main timer with ring.</p>
+
+<p><img src="https://cldup.com/7RcdTyz2cF.png" alt="" /></p>
+
+<p>I then took this concept in addition to my job story and created a Sketch with material design.</p>
+
+<p>I used Google’s material <a href="https://material.io/guidelines/style/color.html#">color guides</a>.</p>
+
+<p><img src="https://cldup.com/7g3IP04vLD.png" alt="" /></p>
+
+<p>In addition to their material <a href="https://material.io/guidelines/material-design/elevation-shadows.html#elevation-shadows-elevation-android">shadow guides</a>.</p>
+
+<p><img src="https://cldup.com/68Q_50WcsM.png" alt="" /></p>
+
+<p>The original Sketch came out as the following…</p>
+
+<p><img src="https://cldup.com/sJEO3XmCk4.png" alt="" /></p>
+
+<p>and the final Sketch…</p>
+
+<p><img src="https://cldup.com/7wl4LYoilo.png" alt="" /></p>
+
+<p>The bottom timeline arch is a visual representation of your day. Each small circle is a twenty five minute work timers, each followed by a five minute break timer (not represented on the arch timeline). The arch also includes three, thirty minute long break timers. A long break occurs after four consecutive work timers.</p>
+
+<p>The top timer is used to visually represent your current timer. This time is represented both in minutes:seconds and by a deprecating ring.</p>
+
+<h1 style="color:blue; text-align:center;"><a href="http://bit.ly/productivelyDL" download="">⬇️ Download for Mac!</a></h1>
+<p style="margin-top:-10px;font-size:12px;text-align:center">then: ctrl click &gt; open </p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p><strong>What Worked?</strong>
+<br />
+Redux state proved to be a very nice way to keep time and move between multiple timers.</p>
+
+<p><strong>What were your doubts going into the project?</strong>
+<br />
+Timeline for project completion.</p>
+
+<p><strong>What surprised you the most?</strong>
+<br />
+How quickly the styling came together.</p>
+
+<p><strong>What would you have done differently?</strong>
+<br />
+Further imbed the timer into the mac tray allowing for less upfront UI and a more streamlined user experience.</p>
+
+<p><strong>What did you learn while doing this project?</strong>
+<br />
+I learned how to create electron desktop apps and how to implement material design while improving my knowledge of Redux.</p>
+
+<p><strong>How will you use that information in the future?</strong>
+<br />
+I will further my Redux development and use both material design and desktop development.</p>
+
+<h2 id="more">More</h2>
+
+<p>See how I worked with React + Redux in my <a href="http://www.forgeon.info/portfolio/1-myTopStop/">ride sharing discovery app 👉</a></p>
+
+    </div>
+  </section>
+
+</article>
+
+
+      <!-- Footer -->
+<footer id="footer">
+  <ul class="icons">
+    
+    
+    
+    <li><a target="_blank" href="https://twitter.com/rjforgeon" class="icon fa-twitter"
+           ><span class="label">twitter</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="https://github.com/rforgeon" class="icon fa-github"
+           ><span class="label">github</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="https://linkedin.com/in/forgeon" class="icon fa-linkedin-square"
+           ><span class="label">linkedin-square</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="mailto:rforgeon@gmail.com" class="icon fa-envelope-o"
+           ><span class="label">E-mail</span></a></li>
+    
+    
+    
+  </ul>
+  <ul class="copyright">
+    <li>&copy; 
+    
+      
+      
+    
+    2017
+    Ralph Forgeon</li>
+    <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+    <!-- <li>Built with: <a href="http://jekyllrb.com" target="_blank">Jekyll</a></li> -->
+  </ul>
+</footer>
+
+
+      <!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollex.min.js"></script>
+<script src="/js/jquery.scrolly.min.js"></script>
+<script src="/js/skel.min.js"></script>
+<script src="/js/util.js"></script>
+<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+<script src="/js/main.js"></script>
+
+
+    </div>
+
+  </body>
+
+</html>

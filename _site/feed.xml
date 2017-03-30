@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ralph Forgeon</title>
+    <description>Product forward • React • Redux • Ruby • Rails
+</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 30 Mar 2017 15:19:52 -0700</pubDate>
+    <lastBuildDate>Thu, 30 Mar 2017 15:19:52 -0700</lastBuildDate>
+    <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Toying with Augmented Reality</title>
+        <description>&lt;div style=&quot;text-align:center; &quot;&gt;&lt;img src=&quot;https://cldup.com/yKNshWjCfz.png&quot; /&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;I started getting interested in augmented reality when a learned about Magic Leap (or more so the idea for Magic Leap) back in the early 2015.&lt;/p&gt;
+
+&lt;p&gt;Magic Leaps founder, Rony Abovitz, had this obscure demo app out. Unfortunately, it no longer exists. The app provided you with a link to a print out (later to find out this is a target). When you point your phone’s camera at the target, an animated robot popped up, looked at you, and made some screeching robot noises before disappearing again.&lt;/p&gt;
+
+&lt;p&gt;After looking into it further. I found that Qualcomm had developed some software for generating a connection to these targets. This was paired with Unity (a game development software).&lt;/p&gt;
+
+&lt;p&gt;Since both a Vuforia and Unity starter account is free, I hopped in and started hacking.&lt;/p&gt;
+
+&lt;p&gt;The best beginner resource I recommend is a tutorial found on &lt;a href=&quot;http://www.dannygoodayle.com/2013/03/01/making-your-first-project-with-unity-and-augmented-reality/&quot;&gt;Danny Goodayle’s blog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;From there, I started with &lt;strong&gt;static targets&lt;/strong&gt;, played with &lt;strong&gt;dynamic targets&lt;/strong&gt;, then got into &lt;strong&gt;facial tracking&lt;/strong&gt;. Take a look 👀&lt;/p&gt;
+
+&lt;h2 id=&quot;static-target&quot;&gt;Static Target&lt;/h2&gt;
+
+&lt;div style=&quot;text-align:center;&quot;&gt;
+
+  &lt;!-- &quot;Video For Everybody&quot; http://camendesign.com/code/video_for_everybody --&gt;
+  &lt;video controls=&quot;controls&quot; width=&quot;450&quot; height=&quot;400&quot;&gt;
+    &lt;source src=&quot;https://instagram.fsnc1-2.fna.fbcdn.net/t50.2886-16/11773027_1477125979265254_973512356_n.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+    &lt;object type=&quot;application/x-shockwave-flash&quot; data=&quot;http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf&quot; width=&quot;450&quot; height=&quot;400&quot;&gt;
+      &lt;param name=&quot;movie&quot; value=&quot;http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf&quot; /&gt;
+      &lt;param name=&quot;allowFullScreen&quot; value=&quot;true&quot; /&gt;
+      &lt;param name=&quot;wmode&quot; value=&quot;transparent&quot; /&gt;
+      &lt;param name=&quot;flashVars&quot; value=&quot;config={'playlist':[{'url':'https%3A%2F%2Finstagram.fsnc1-2.fna.fbcdn.net%2Ft50.2886-16%2F11773027_1477125979265254_973512356_n.mp4','autoPlay':false}]}&quot; /&gt;
+      &lt;span title=&quot;No video playback capabilities, please download the video below&quot;&gt;Coke-a-cola&lt;/span&gt;
+    &lt;/object&gt;
+  &lt;/video&gt;
+
+    &lt;!-- &quot;Video For Everybody&quot; http://camendesign.com/code/video_for_everybody --&gt;
+  &lt;video controls=&quot;controls&quot; poster=&quot;https://instagram.fsnc1-2.fna.fbcdn.net/t51.2885-15/e15/11881621_506472989517048_1110307166_n.jpg?ig_cache_key=MTA2ODE4NTIxMDMzNDE1NDQ5Mw%3D%3D.2&quot; width=&quot;500&quot; height=&quot;400&quot;&gt;
+    &lt;source src=&quot;https://instagram.fsnc1-2.fna.fbcdn.net/t50.2886-16/11948815_522770874541941_470873750_n.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+    &lt;object type=&quot;application/x-shockwave-flash&quot; data=&quot;http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf&quot; width=&quot;500&quot; height=&quot;400&quot;&gt;
+      &lt;param name=&quot;movie&quot; value=&quot;http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf&quot; /&gt;
+      &lt;param name=&quot;allowFullScreen&quot; value=&quot;true&quot; /&gt;
+      &lt;param name=&quot;wmode&quot; value=&quot;transparent&quot; /&gt;
+      &lt;param name=&quot;flashVars&quot; value=&quot;config={'playlist':['https%3A%2F%2Finstagram.fsnc1-2.fna.fbcdn.net%2Ft51.2885-15%2Fe15%2F11881621_506472989517048_1110307166_n.jpg%3Fig_cache_key%3DMTA2ODE4NTIxMDMzNDE1NDQ5Mw%253D%253D.2',{'url':'https%3A%2F%2Finstagram.fsnc1-2.fna.fbcdn.net%2Ft50.2886-16%2F11948815_522770874541941_470873750_n.mp4','autoPlay':false}]}&quot; /&gt;
+      &lt;img alt=&quot;Big Buck Bunny&quot; src=&quot;https://instagram.fsnc1-2.fna.fbcdn.net/t51.2885-15/e15/11881621_506472989517048_1110307166_n.jpg?ig_cache_key=MTA2ODE4NTIxMDMzNDE1NDQ5Mw%3D%3D.2&quot; width=&quot;500&quot; height=&quot;400&quot; title=&quot;No video playback capabilities, please download the video below&quot; /&gt;
+    &lt;/object&gt;
+  &lt;/video&gt;
+  &lt;br /&gt;
+
+  &lt;!-- &quot;Video For Everybody&quot; http://camendesign.com/code/video_for_everybody --&gt;
+  &lt;video controls=&quot;controls&quot; poster=&quot;https://instagram.fsnc1-2.fna.fbcdn.net/t51.2885-15/e15/12362486_1497196783917591_145230436_n.jpg?ig_cache_key=MTE0MTYyNTc1MzI4MTY5NTMzMg%3D%3D.2&quot; width=&quot;500&quot; height=&quot;400&quot;&gt;
+  	&lt;source src=&quot;https://instagram.fsnc1-2.fna.fbcdn.net/t50.2886-16/12368959_1017758238282931_1901270271_n.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+  	&lt;img alt=&quot;Starbucks AR&quot; src=&quot;https://instagram.fsnc1-2.fna.fbcdn.net/t51.2885-15/e15/12362486_1497196783917591_145230436_n.jpg?ig_cache_key=MTE0MTYyNTc1MzI4MTY5NTMzMg%3D%3D.2&quot; width=&quot;250&quot; height=&quot;300&quot; title=&quot;No video playback capabilities, please download the video below&quot; /&gt;
+  &lt;/video&gt;
+  &lt;br /&gt;
+
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;dynamic-target&quot;&gt;Dynamic Target&lt;/h2&gt;
+
+&lt;div style=&quot;text-align:center;&quot;&gt;
+  &lt;video controls=&quot;controls&quot; width=&quot;450&quot; height=&quot;400&quot;&gt;
+  	&lt;source src=&quot;https://instagram.fsnc1-2.fna.fbcdn.net/t50.2886-16/12461691_1194397447255757_1386843048_n.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+  	&lt;span title=&quot;No video playback capabilities, please download the video below&quot;&gt;Coke-a-cola&lt;/span&gt;
+  &lt;/video&gt;
+  &lt;br /&gt;
+  &lt;video controls=&quot;controls&quot; width=&quot;450&quot; height=&quot;400&quot;&gt;
+  	&lt;source src=&quot;https://static.everyplay.com/everyplay/videos/30925389/24898904/m31-1500.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+  	&lt;span title=&quot;No video playback capabilities, please download the video below&quot;&gt;Coke-a-cola&lt;/span&gt;
+  &lt;/video&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;facial-tracking&quot;&gt;Facial Tracking&lt;/h2&gt;
+
+&lt;div style=&quot;text-align:center;&quot;&gt;
+
+  &lt;video controls=&quot;controls&quot; width=&quot;450&quot; height=&quot;400&quot;&gt;
+  	&lt;source src=&quot;https://static.everyplay.com/everyplay/videos/30925389/25850467/m31-1500.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+  	&lt;span title=&quot;No video playback capabilities, please download the video below&quot;&gt;Coke-a-cola&lt;/span&gt;
+  &lt;/video&gt;
+
+
+  &lt;video controls=&quot;controls&quot; width=&quot;450&quot; height=&quot;400&quot;&gt;
+  	&lt;source src=&quot;https://static.everyplay.com/everyplay/videos/30925389/27170009/m31-1500.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+  	&lt;span title=&quot;No video playback capabilities, please download the video below&quot;&gt;Coke-a-cola&lt;/span&gt;
+  &lt;/video&gt;
+
+&lt;/div&gt;
+</description>
+        <pubDate>Fri, 16 Sep 2016 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/post/2016-9-16-augmented-reality/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2016-9-16-augmented-reality/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>&quot;Alexa, where should I eat?&quot;</title>
+        <description>&lt;p&gt;&lt;img src=&quot;https://www.raspberrypi.org/wp-content/uploads/2016/03/51XeN2UYoyL._SL1000_.jpg&quot; alt=&quot;alexa&quot; /&gt;
+Coming Soon…&lt;/p&gt;
+</description>
+        <pubDate>Fri, 16 Sep 2016 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/post/2016-9-16-alexa/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2016-9-16-alexa/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Base Income for the Gig Economy</title>
+        <description>&lt;p&gt;My dad always taught me to “make your money work for you.”&lt;/p&gt;
+
+&lt;p&gt;This refers to the idea of gaining a cashflow while you are not working, rather than work for an hourly wage or salary.&lt;/p&gt;
+
+&lt;p&gt;This is a common theme among digital nomads today. Most achieve this outcome by creating a &lt;a href=&quot;http://expertvagabond.com/paid-to-travel-world/&quot;&gt;high traffic blog&lt;/a&gt; or Saas application.&lt;/p&gt;
+
+&lt;p&gt;Outside of having your money work for you, you might be working free lance or on contract with a company.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;commonly found is a combination of the two&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Sounds complicated with a lot of floating pieces, right?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Your’e right.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Not only is it difficult to manage separate projects, it is difficult to account for how your income might be effected, or even slightly resemble on a monthly basis.&lt;/p&gt;
+
+&lt;p&gt;After all, our world is structured for a month to month balance of income and expenses.&lt;/p&gt;
+
+&lt;p&gt;When visiting Sweden, local friends of mine explained that the culture is straight line, vanilla 🍦. Risk is not highly tolerated and you follow in your lane.&lt;/p&gt;
+
+&lt;p&gt;If risk is not tolerated, how does Stockholm produces the &lt;a href=&quot;http://knowledge.wharton.upenn.edu/article/how-stockholm-became-a-unicorn-factory/&quot;&gt;highest number of so-called “unicorns” per capita&lt;/a&gt;, after San Francisco?&lt;/p&gt;
+
+&lt;p&gt;Well one idea, amongst great infrastructure, is in the antithesis of cultural risk taking: &lt;strong&gt;stability&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;My friend explained to me -&lt;/p&gt;
+
+&lt;p&gt;“Stockholm has so many startups because the guy or gal in their garage knows that if they fail, they will have the support of the government to catch them.”&lt;/p&gt;
+
+&lt;p&gt;“She doesn’t have to rely on a job to provide her healthcare, or education, or basic living essentials.”&lt;/p&gt;
+
+&lt;p&gt;“So really, the risk of starting something is quite small.”&lt;/p&gt;
+
+&lt;p&gt;What if this idea could be captured and collectively practiced amongst like-minded individuals?&lt;/p&gt;
+
+&lt;p&gt;If a group of people could come together to support one another in achieving a small portion of base income, they would propel one another by distributing risk.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;Risk of not having work.&lt;/em&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;Risk of losing an opportunity to further one’s education.&lt;/em&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;Risk of starting a business.&lt;/em&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’ve been toying with the idea. More to come 🔜&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cldup.com/LGfCtynrZR.JPG&quot; alt=&quot;base income sketch&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 15 Sep 2016 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/post/2016-9-15-base-income/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2016-9-15-base-income/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>nativeNomadic Social Media Marketing</title>
+        <description>&lt;p&gt;Currently I am focussing my nativeNomadic marketing on Instagram &lt;a href=&quot;https://www.instagram.com/nativenomadic/&quot;&gt;@nativeNomadic&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;With Instagram automation and the breakout of Instagram stories - it is easy to get a lot of work in with minimal effort (maximum automation).&lt;/p&gt;
+
+&lt;p&gt;Two tools I want to focus on in this post are used for:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Follow Automation&lt;/strong&gt; 👫👬👫&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Instagram Story Takeovers&lt;/strong&gt; 👋👽&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;follow-automation&quot;&gt;Follow Automation&lt;/h2&gt;
+&lt;p&gt;Follow automation is important because when you follow others, they follow you back - this is a powerful dynamic to understand.&lt;/p&gt;
+
+&lt;p&gt;Furthermore, you can always then unfollow these users and they will remain your followers.&lt;/p&gt;
+
+&lt;p&gt;Lastly, this whole process can be automated with a great tool called &lt;a href=&quot;https://instagress.com&quot;&gt;Instagress&lt;/a&gt;. 🙌&lt;/p&gt;
+
+&lt;p&gt;Here is a great video on how to set it up:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://youtu.be/njhfwmbphNI?t=3m35s&quot; title=&quot;Growing Instagram with Instagress&quot;&gt;&lt;img src=&quot;https://cldup.com/wPIDlloZNU.png&quot; alt=&quot;Instagram with Instagress&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;instagram-story-takeovers&quot;&gt;Instagram Story Takeovers&lt;/h2&gt;
+
+&lt;p&gt;Instagram story takeovers allow you to provide a ton of value to your followers for a small price.&lt;/p&gt;
+
+&lt;p&gt;The cost to me is finding digital nomads who will allow me to repost their stories and photos.&lt;/p&gt;
+
+&lt;p&gt;After lining up a few nomads, I use a tool called &lt;a href=&quot;https://itunes.apple.com/us/app/repost-roll-for-instagram/id1142236676?mt=8&quot;&gt;Repost &amp;amp; Roll&lt;/a&gt; that allows me to simply repost another users content to my account.&lt;/p&gt;
+
+&lt;p&gt;And ✨&lt;em&gt;voila&lt;/em&gt;✨ a flushed out account with content catered towards those interested in digital nomad culture.&lt;/p&gt;
+
+&lt;p&gt;The combination of follow automation and takeover content makes for good growth and reach. 📈&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.instagram.com/nativenomadic/&quot; title=&quot;nativeNomadic&quot;&gt;&lt;img src=&quot;https://cldup.com/5eRXL2Ovw5.png&quot; alt=&quot;@nativeNomadic&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 14 Sep 2016 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/post/2016-9-14-nativeNomadic-socialMedia-marketing/</link>
+        <guid isPermaLink="true">http://localhost:4000/post/2016-9-14-nativeNomadic-socialMedia-marketing/</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

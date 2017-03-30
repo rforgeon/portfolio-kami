@@ -1,0 +1,80 @@
+# Welcome to Jekyll!
+#
+
+# Site settings
+title: Ralph Forgeon
+description: |
+  Product forward • React • Redux • Ruby • Rails
+owner: Ralph Forgeon # or company name
+first_published: 2017 # if migrating another site, the year of your first publish
+email: rforgeon@gmail.com #doesn't change contact button
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://rforgeon.github.io" # the base hostname & protocol for your site
+
+google_fonts: "Lato:300,400,700,300italic,700italic|Raleway"
+
+#Scripts
+google_analytics: ["UA-84262886-1","UA-92794463-1"]
+
+
+# COLLECTIONS
+collections:
+  portfolio:
+    output: true
+    permalink: /portfolio/:path/
+  posts:
+    output: true
+    permalink: /post/:path/
+
+# PAGINATION
+paginate: 100
+paginate_path: "blog/page:num"
+
+social:
+  twitter: https://twitter.com/rjforgeon
+  github: https://github.com/rforgeon
+  linkedin-square: https://linkedin.com/in/forgeon
+  #facebook-official: https://facebook.com/<username>
+  #google-plus-square: https://plus.google.com/u/0/+<username>
+  email: mailto:rforgeon@gmail.com
+  #flickr:
+  #instagram:
+  #youtube-square:
+  #spotify:
+  #stack-overflow:
+  #vimeo:
+  #reddit:
+  #stubleupon:
+  #delicious:
+  #pied-piper:
+  #digg:
+  #soundcloud:
+  #deviantart:
+  #angellist:
+  #tumblr-square:
+  #stackexchange:
+  #weibo:
+  #trello:
+  #foursquare:
+  #linux:
+  #bitbucket-square:
+  #vk:
+  #slack:
+  #vine:
+  #weixin:
+  #yelp:
+  #skyatlas:
+  #leanpub:
+  #connectdevelop:
+  #ils:
+  #forumbee:
+  #tripadvisor:
+  #amazon:
+
+
+# Build settings
+markdown: kramdown
+#sass:
+#  style: compressed
+
+gems: [jekyll-paginate]

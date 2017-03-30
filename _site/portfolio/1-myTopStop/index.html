@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<!--
+  Original Design: Spectral by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+  Jekyll build mod
+-->
+<html>
+
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Top Stop</title>
+  <meta name="description" content="">
+  <!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+  <link rel="canonical" href="http://localhost:4000/portfolio/1-myTopStop/">
+  <link rel="stylesheet" href="/css/main.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
+  <link rel="alternate" type="application/rss+xml" title="Ralph Forgeon" href="http://localhost:4000/feed.xml">
+</head>
+
+
+  <body>
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+      <!-- Header -->
+<header id="header">
+  <h1><a href="/index.html">Ralph Forgeon</a></h1>
+  <nav id="nav">
+    <ul>
+      <li class="special">
+        <a href="#menu" class="menuToggle"><span>Menu</span></a>
+        <div id="menu">
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <br>
+            
+            
+            <li><a href="/portfolio/1-myTopStop/">My Top Stop</a></li>
+            
+            
+            
+            <li><a href="/portfolio/2-productively/">Productively</a></li>
+            
+            
+            
+            <li><a href="/portfolio/3-lickLink/">Lick Link</a></li>
+            
+            
+            <br>
+            <li><a href="/posts.html">My Posts</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+      <article id="main">
+
+  <header>
+    <h2>My Top Stop</h2>
+  </header>
+
+  <section class="wrapper style5">
+    <div class="inner">
+      <div style="text-align:center"><img style="width:30vw" src="https://cldup.com/52lKD4DvF8.gif" /></div>
+
+<p>Explore and share your top Lyft destinations from the past year. Receive recommendations for similar destinations you might like.</p>
+
+<p>🔥 Try it now at <a href="http://mytopstop.com/">mytopstop.com</a>!</p>
+
+<p><br /></p>
+
+<div style="text-align:center; -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0))); "><img style="width:25vw" src="http://i.giphy.com/WAFNKlENoOcPC.gif" /></div>
+
+<h2 id="problems-️-solutions">Problems ➡️ Solutions</h2>
+
+<p><br />
+<br />
+<br /></p>
+
+<div style="text-align:center; font-size:200px ">A</div>
+
+<p><br />
+<br />
+<br />
+<br /></p>
+
+<h2 id="problem-a-pivot">Problem (A): Pivot</h2>
+
+<p>I learned a valuable lesson to fully understand the abilities and limitations of an external API before building an app around it.</p>
+
+<p>My initial idea for this project was to create a dashboard that informed a user of their Lyft ride’s estimated ride time vs. actual ride time.</p>
+
+<p><img src="https://cldup.com/2DFrQIg_qi.png" alt="" /></p>
+
+<p>Lyft does not save the estimated ride time, it is only accessible at the beginning of a ride. My workaround for this was to create a webhook on my API that would save the estimated ride time when a ride was started. I had saved authentication tokens for Lyft, so I assumed that once a user connects with my app, I could receive webhooks of their estimated ride time when they started a ride through the Lyft app…</p>
+
+<p><strong>Wrong.</strong></p>
+
+<p><img src="https://cldup.com/bv1PcLII2w.png" alt="" /></p>
+
+<p>I would only have access to this data if the user requested a ride through my app rather than the Lyft app. This drastically altered my concept for a passive app and I decided to rethink my approach.</p>
+
+<h2 id="solution-a-pivot">Solution (A): Pivot</h2>
+
+<p>I landed on the idea of my current app, My Top Stop. With a user’s historic Lyft rides, I could still create some value in combining additional API’s - Google maps and Yelp.</p>
+
+<h2 id="results-a-pivot">Results (A): Pivot</h2>
+
+<p>I’m actually much happier with the new design of the app. My Top Stop is much more interactive and social than my original design. This was a good lesson in implementing your design due diligence before building.</p>
+
+<div style="text-align:center; ">•••••••••••••••••••</div>
+
+<p><br /></p>
+
+<div style="text-align:center; font-size:200px; ">B</div>
+
+<p><br />
+<br />
+<br />
+<br /></p>
+
+<h2 id="problem-b-multiple-middleware-automation-and-sequencing">Problem (B): Multiple Middleware: Automation and Sequencing</h2>
+
+<p>The challenge here was to implement multiple different API calls through middleware when loading the app.</p>
+
+<h2 id="solution-b-multiple-middleware-automation-and-sequencing">Solution (B): Multiple Middleware: Automation and Sequencing</h2>
+
+<p>Once you login through Lyft, what needs to happen?</p>
+
+<ul>
+  <li>Fetch the past year of Lyft rides</li>
+  <li>Sort your Lyft rides by most duplicates first, followed by most recent</li>
+  <li>Fetch three Yelp locations near your Lyft destination</li>
+  <li>Fetch recommendations based on your top three destinations</li>
+</ul>
+
+<p>This all happens during the load screen:</p>
+
+<p><img src="https://cldup.com/sFSK5D-7U1.png" alt="" /></p>
+
+<p>There is a nice way to implement multiple middleware at once. This can be done by using <a href="https://github.com/ashaffer/redux-multi">redux-multi</a> to create an action that dispatches an array of actions.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">initDashboard</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">[</span>
+    <span class="nx">fetchLyftRides</span><span class="p">(),</span>
+    <span class="nx">sortLyftRides</span><span class="p">(),</span>
+    <span class="nx">fetchYelpLocations</span><span class="p">(),</span>
+    <span class="nx">fetchYelpRecommendations</span><span class="p">()</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This is a good start for automating multiple middleware scripts at once, however, we run into a new problem.</p>
+
+<p>When calling the action <strong>initDashboard()</strong>, we will fire a dispatch for each action in the array. <strong>fetchLyftRides()</strong> will begin, and immediately after, <strong>sortLyftRides()</strong> will begin. While <strong>fetchLyftRides()</strong> is calling the Lyft API, the <strong>sortLyftRides()</strong> middleware will begin trying to sort the fetched rides. If <strong>fetchLyftRides()</strong> has not completed yet, we will return an incomplete, inaccurate sorted list of rides.</p>
+
+<p>To avoid this problem using multiple middleware, we need to make sure they complete in order:</p>
+
+<ol>
+  <li>Fetch the past year of Lyft rides</li>
+  <li>Sort your Lyft rides by most duplicates first, followed by most recent</li>
+  <li>Fetch three Yelp locations near your Lyft destination</li>
+  <li>Fetch recommendations based on your top three destinations</li>
+</ol>
+
+<p>In order to sequence my middleware, I have my middleware listen for when the previous middleware is successfully completed:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">recommendationMiddleware</span> <span class="o">=</span> <span class="nx">store</span> <span class="o">=&gt;</span> <span class="nx">next</span> <span class="o">=&gt;</span> <span class="nx">action</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">'FETCH_YELP_SUCCESS'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">().</span><span class="nx">fetcher</span><span class="p">.</span><span class="nx">isFetchingRecommendations</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">fetchResultsRequest</span><span class="p">(</span><span class="nx">store</span><span class="p">,</span> <span class="nx">action</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">next</span><span class="p">(</span><span class="nx">action</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">action</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Okay, so this works for dispatching multiple middleware sequentially, but what if I want to call this middleware individually?</p>
+
+<p>That is also possible by creating the middleware’s own action and also listen for it in the fetch logic:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">recommendationMiddleware</span> <span class="o">=</span> <span class="nx">store</span> <span class="o">=&gt;</span> <span class="nx">next</span> <span class="o">=&gt;</span> <span class="nx">action</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">'FETCH_RECOMMENDATION_REQUEST'</span> <span class="o">||</span> <span class="nx">action</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">'FETCH_YELP_SUCCESS'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">().</span><span class="nx">fetcher</span><span class="p">.</span><span class="nx">isFetchingRecommendations</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">fetchResultsRequest</span><span class="p">(</span><span class="nx">store</span><span class="p">,</span> <span class="nx">action</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">next</span><span class="p">(</span><span class="nx">action</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">action</span><span class="p">;</span>
+  <span class="p">}</span>
+
+</code></pre>
+</div>
+
+<h2 id="results-b-multiple-middleware-automation-and-sequencing">Results (B): Multiple Middleware: Automation and Sequencing</h2>
+
+<p>By implementing this form a sequencing through my middleware, I’m able to organize and separate my middleware, and at the same time, assure that they fetch in the correct order.</p>
+
+<p><br /></p>
+
+<div style="text-align:center; ">•••••••••••••••••••</div>
+
+<p><br /></p>
+
+<div style="text-align:center; margin-left:-17px; font-size:200px; ">C</div>
+
+<p><br />
+<br />
+<br />
+<br /></p>
+
+<h2 id="problem-c-decoupled-api--client">Problem (C): Decoupled API &amp; Client</h2>
+
+<p>The challenge here was to create a modern decoupled app - Rails backend and React/Redux frontend.</p>
+
+<p>The difficulties that arose were:</p>
+<ul>
+  <li>0Auth2</li>
+  <li>User login and security</li>
+  <li>Communicating params between client and API</li>
+</ul>
+
+<h2 id="solution-c-decoupled-api--client">Solution (C): Decoupled API &amp; Client</h2>
+
+<h3 id="0auth2">0Auth2</h3>
+
+<p>When connecting users to their Lyft account, Lyft requires an <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2">0Auth2</a> authentication. This is a common authentication method these days and can be implemented well with rails using <a href="https://github.com/omniauth/omniauth">Omniauth</a>.</p>
+
+<p>Some common services even have specialized Omniauth “strategies” bundled into gems such as <a href="https://github.com/mkdynamic/omniauth-facebook">Facebook</a>.</p>
+
+<p>Unfortunately, I could not find an open source Lyft Omniauth strategy. This forced me to create my own Omniauth strategy for Lyft.</p>
+
+<p>This was a great learning experience in itself as Omniauth is a great middleware service to learn for Rails.</p>
+
+<h3 id="user-login-and-security">User Login and Security</h3>
+
+<p>When creating a Ruby on Rails app, it is very easy to implement a fairly secure login. This is because your frontend is directly connected with your backend, allowing the app to know your current session at all times.</p>
+
+<p>However, when your client is decoupled from your backend, and you must access it via an API, you must persist a login user token on your client side, and check it against your backend each time you communicate with your API.</p>
+
+<p>Thankfully, there are some good tools out there for this exact problem.
+I used these:</p>
+
+<ul>
+  <li>Backend: <a href="https://github.com/lynndylanhurley/devise_token_auth">Devise Token Auth</a></li>
+  <li>Frontend: <a href="https://github.com/lynndylanhurley/j-toker">j-Toker</a></li>
+</ul>
+
+<p>I was surprised how much work has to be done to secure communication between API’s and clients.</p>
+
+<h3 id="communicating-params-between-client-and-api">Communicating Params Between Client and API</h3>
+
+<p>There are times when you need to communicate information back and forth between your client and API without creating an individual API call.</p>
+
+<p>A good way to implement this is through URL parameters. I use URL parameters, “params,” in two ways.</p>
+
+<p>The first is by providing user identification params to my Lyft authentication callback. This allows me to match the correct user to the Lyft authentication token (In the my current build, this is deprecated).</p>
+
+<p>The second is to communicate the Lyft authentication token to my client without saving it in my backend. I could increase security further by saving the Lyft token to my backend and masking it behind a separate ID. However, under the app’s current permissions, the provided Lyft token only provides ride history information and expires after one hour.</p>
+
+<p>Using params is a fast, useful, and light weight way to move information.</p>
+
+<h2 id="results-c-decoupled-api--client">Results (C): Decoupled API &amp; Client</h2>
+
+<p>Having a decoupled API and Client is very valuable for scaling an app. In today’s environment, an app has to come out the box almost immediately supporting multiple clients - whether web, mobile, desktop, or more.</p>
+
+<p>Starting out with a decoupled API and client allows for an easier implementation of multiple clients. However, if speed of initial go to market is required, it’s possible that decoupling is not the best route - that being said, decoupling will take more time later.</p>
+
+<div style="text-align:center; ">•••••••••••••••••••</div>
+
+<p><br /></p>
+
+<h1 id="project-design">Project Design</h1>
+
+<div style="text-align:center; -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0))); "><img src="http://i.giphy.com/3o6ZteZyWPqKgynJGU.gif" /></div>
+
+<p><br /></p>
+
+<h2 id="-ux">🔎 UX</h2>
+
+<p>I took a <a href="https://jtbd.info/replacing-the-user-story-with-the-job-story-af7cdee10c27#.gbjooeabd">Job Story</a> approach to my user experience.</p>
+
+<p><img src="https://cldup.com/7zL2C03bC2.png" alt="" /></p>
+
+<h2 id="-visual">👀 Visual</h2>
+
+<p>My first sketch laid out the material tiles.</p>
+
+<p><img src="https://cldup.com/oXBB9WILmE.png" alt="" /></p>
+
+<p>Most of the app was built with simple buttons before adding any styling.</p>
+
+<p><img src="https://cldup.com/t-p0fBtU48.png" alt="" /></p>
+
+<p>The original design had a persisted “Connect Lyft” button once the user connected.</p>
+
+<p><img src="https://cldup.com/F1J4Az4_Eq.png" alt="" /></p>
+
+<p>The final design provides a much clearer connection flow for intuitive use.</p>
+
+<p><img src="https://cldup.com/cLeW8oYAGs.png" alt="" /></p>
+
+<p>The “Connect Lyft” button is now only visible at initial entry and once the Lyft token expires (after 60 minutes).</p>
+
+<p><img src="https://cldup.com/SH96shWwXZ.png" alt="" /></p>
+
+<div style="text-align:center; ">•••••••••••••••••••</div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p><strong>What Worked?</strong>
+I enjoyed the challenge of providing added value by creating an API mashup (Lyft, Google, and Yelp).
+<br /></p>
+
+<p><strong>What were your doubts going into the project?</strong>
+Successfully implementing a decoupled API and client.
+<br /></p>
+
+<p><strong>What surprised you the most?</strong>
+How much must be done to secure communication between API’s and clients.
+<br /></p>
+
+<p><strong>What would you have done differently?</strong>
+Further due diligence before starting to build. On each project I develop, I learn new requirements I need to research before I start writing code.</p>
+
+<p><strong>What did you learn while doing this project?</strong>
+I learned how to create a decoupled API and client app, including security practices that go along with decoupling. I also learned a lot about working with API’s - how to build them and how to implement them with a client.
+<br /></p>
+
+<p><strong>How will you use that information in the future?</strong>
+I’m confident I will use this information for future projects as many apps are becoming more decoupled. Additionally, most apps either use or provide API’s.
+<br /></p>
+
+<h2 id="more">More</h2>
+
+<p>See how I worked with React + Redux to create a <a href="http://www.forgeon.info/portfolio/2-productively/">Mac Desktop App  👉</a></p>
+
+    </div>
+  </section>
+
+</article>
+
+
+      <!-- Footer -->
+<footer id="footer">
+  <ul class="icons">
+    
+    
+    
+    <li><a target="_blank" href="https://twitter.com/rjforgeon" class="icon fa-twitter"
+           ><span class="label">twitter</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="https://github.com/rforgeon" class="icon fa-github"
+           ><span class="label">github</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="https://linkedin.com/in/forgeon" class="icon fa-linkedin-square"
+           ><span class="label">linkedin-square</span></a></li>
+    
+    
+    
+    
+    
+    <li><a target="_blank" href="mailto:rforgeon@gmail.com" class="icon fa-envelope-o"
+           ><span class="label">E-mail</span></a></li>
+    
+    
+    
+  </ul>
+  <ul class="copyright">
+    <li>&copy; 
+    
+      
+      
+    
+    2017
+    Ralph Forgeon</li>
+    <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+    <!-- <li>Built with: <a href="http://jekyllrb.com" target="_blank">Jekyll</a></li> -->
+  </ul>
+</footer>
+
+
+      <!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollex.min.js"></script>
+<script src="/js/jquery.scrolly.min.js"></script>
+<script src="/js/skel.min.js"></script>
+<script src="/js/util.js"></script>
+<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+<script src="/js/main.js"></script>
+
+
+    </div>
+
+  </body>
+
+</html>

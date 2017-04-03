@@ -10,7 +10,7 @@ short-description: Explore and share your top Lyft destinations.
 
 <div style="text-align:center"><img style="width:30vw" src ="https://cldup.com/52lKD4DvF8.gif" /></div>
 
-Explore and share your top Lyft destinations from the past year. Receive recommendations for similar destinations you might like.
+Explore and share your top ride share destinations from the past year. Receive recommendations for similar destinations you might like.
 
 🔥 Try it now at [mytopstop.com](http://mytopstop.com/)!
 

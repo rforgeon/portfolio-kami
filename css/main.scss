@@ -1357,6 +1357,20 @@ $baseurl: '{{ site.baseurl }}/images';
 		}
 	}
 
+	.quoteTitle{
+		display: inline-block;
+		width: 20vw;
+		vertical-align: top;
+	}
+
+	.quoteBody{
+		display: inline-block;
+		width: 50vw;
+		padding-left: 25px;
+		padding-top: 50px;
+	}
+
+
 /* Page Wrapper + Menu */
 
 	#page-wrapper {
@@ -1943,4 +1957,17 @@ $baseurl: '{{ site.baseurl }}/images';
 				background-color: darken(_palette(bg), 8);
 			}
 		}
+	}
+
+	@media (max-width: 600px){
+		.quoteTitle{
+			display: inline-block;
+			width: 100%;
+		}
+		.quoteBody{
+			display: inline-block;
+			width:100%
+    	padding-top: 0px;
+		}
+
 	}

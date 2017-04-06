@@ -2256,6 +2256,17 @@ button,
     .wrapper {
       padding: 3em 2em 1em 2em ; } }
 
+.quoteTitle {
+  display: inline-block;
+  width: 20vw;
+  vertical-align: top; }
+
+.quoteBody {
+  display: inline-block;
+  width: 50vw;
+  padding-left: 25px;
+  padding-top: 50px; }
+
 /* Page Wrapper + Menu */
 #page-wrapper {
   -moz-transition: opacity 0.5s ease;
@@ -2750,3 +2761,12 @@ body.is-mobile.landing .wrapper.style4 {
   background-size: cover; }
 body.is-mobile.landing #footer {
   background-color: #1d242a; }
+
+@media (max-width: 600px) {
+  .quoteTitle {
+    display: inline-block;
+    width: 100%; }
+
+  .quoteBody {
+    display: inline-block;
+    width: 100%; } }

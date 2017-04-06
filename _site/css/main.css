@@ -2769,4 +2769,5 @@ body.is-mobile.landing #footer {
 
   .quoteBody {
     display: inline-block;
-    width: 100%; } }
+    width: 100%;
+    padding-top: 0px; } }

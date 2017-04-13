@@ -65,6 +65,14 @@ When using a PostgreSQL server, the database needs to be primed for UUID's
 $ rails g migration enable_uuid_extension
 ```
 
+```
+class EnableUuidExtension < ActiveRecord::Migration
+  def change
+    enable_extension 'uuid-ossp'
+  end
+end
+```
+
 Once this is done, you can then create your model.
 
 ```
@@ -76,7 +84,7 @@ Note the migration now includes **:uuid** as the primary key.
 ```ruby
 class CreatePosts < ActiveRecord::Migration
   def change
-    create_table :posts, id: :uuid  do |t|
+    create_table :posts, id: :uuid, default: "uuid_generate_v4()", force: true do |t|
       t.string :title
       t.string :body
       t.timestamps

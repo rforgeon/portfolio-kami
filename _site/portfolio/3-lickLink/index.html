@@ -120,6 +120,14 @@
 </code></pre>
 </div>
 
+<div class="highlighter-rouge"><pre class="highlight"><code>class EnableUuidExtension &lt; ActiveRecord::Migration
+  def change
+    enable_extension 'uuid-ossp'
+  end
+end
+</code></pre>
+</div>
+
 <p>Once this is done, you can then create your model.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>$ rails g model post
@@ -130,7 +138,7 @@
 
 <div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CreatePosts</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
   <span class="k">def</span> <span class="nf">change</span>
-    <span class="n">create_table</span> <span class="ss">:posts</span><span class="p">,</span> <span class="ss">id: :uuid</span>  <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+    <span class="n">create_table</span> <span class="ss">:posts</span><span class="p">,</span> <span class="ss">id: :uuid</span><span class="p">,</span> <span class="ss">default: </span><span class="s2">"uuid_generate_v4()"</span><span class="p">,</span> <span class="ss">force: </span><span class="kp">true</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
       <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:title</span>
       <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:body</span>
       <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>

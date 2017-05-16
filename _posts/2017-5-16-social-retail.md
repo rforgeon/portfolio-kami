@@ -23,7 +23,7 @@ We are more social than ever; is it impossible for a digital experience to overt
 
 Both shoppers and retailers love social shopping! What’s innovating social retail?
 
-## Shopper ❤️ Social Shopping
+## Shoppers ❤️ Social Shopping
 
 According to [Dresser](http://dressertheapp.com/blog/2016/09/01/do-you-prefer-shopping-alone-or-with-friends/) blog, shopping alone sucks:
 

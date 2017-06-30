@@ -2,7 +2,7 @@
 layout: page
 title: Browse Party
 thumbnail-path: "https://cldup.com/hmF4krbt33.gif"
-short-description: Add hovering video chatroom to any website.
+short-description: Add a hovering video chatroom to any website.
 short-description-line2: ""
 short-description-line3: "View Project Details"
 ---

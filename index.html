@@ -69,9 +69,9 @@ layout: landing
 						</section>
 
 						<section class="spotlight">
-								<div class="image" style="padding:20px;">
+								<div class="image" >
 									<a href="{{ site.portfolio[2].url | prepend: site.baseurl }}">
-										<img src="{{ site.portfolio[2].thumbnail-path }}" alt="{{ site.portfolio[1].title }}"/>
+										<img src="{{ site.portfolio[2].thumbnail-path }}" alt="{{ site.portfolio[2].title }}" style="padding:3vw;"/>
 									</a>
 								</div>
 							<div class="content">
@@ -83,6 +83,24 @@ layout: landing
 								</a>
 							</div>
 						</section>
+
+						<section class="spotlight">
+								<div class="image" style="padding:20px;">
+									<a href="{{ site.portfolio[3].url | prepend: site.baseurl }}">
+										<img src="{{ site.portfolio[3].thumbnail-path }}" alt="{{ site.portfolio[3].title }}"/>
+									</a>
+								</div>
+							<div class="content">
+								<a href="{{ site.portfolio[3].url | prepend: site.baseurl }}">
+									<h2>{{ site.portfolio[3].title }}</h2>
+									<p>{{ site.portfolio[3].short-description }}</p>
+									<p style="margin-top:-20px;">{{ site.portfolio[3].short-description-line2 }}</p>
+									<p style="margin-top:-20px;font-size:10px">{{ site.portfolio[3].short-description-line3 }}</p>
+								</a>
+							</div>
+						</section>
+					</section>
+
 					</section>
 
 					<!-- Two -->

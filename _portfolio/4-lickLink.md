@@ -3,7 +3,7 @@ layout: page
 title: Lick Link
 thumbnail-path: images/iphone-silver-lickLink-861px.png
 short-description: Influencer sponsorship platform.
-short-description-line2: "⚠️ Currently Under Development"
+short-description-line2: "Invision Clickable Prototype"
 short-description-line3: "👀 View Prototype"
 ---
 

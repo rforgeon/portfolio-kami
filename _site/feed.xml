@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ralph Forgeon</title>
-    <description>Product forward • React • Redux • Ruby • Rails
+    <description>Product • UX • React • Redux • Ruby • Rails
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 30 Jun 2017 13:59:33 +0100</pubDate>
-    <lastBuildDate>Fri, 30 Jun 2017 13:59:33 +0100</lastBuildDate>
+    <pubDate>Fri, 18 Aug 2017 16:51:17 +0100</pubDate>
+    <lastBuildDate>Fri, 18 Aug 2017 16:51:17 +0100</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -44,19 +44,21 @@
 
 &lt;p&gt;According to the YouNeedaBudget survey, 64% of adults said they end up spending more money when they shop with friends.&lt;/p&gt;
 
-&lt;p&gt;This makes me curious about social retail, so I built an app to test social retail behavior with my own form of a digital shopping mall:&lt;/p&gt;
+&lt;p&gt;This makes me curious about social retail, so I built an app that can be added to e-commerce sites to test social retail behavior:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://www.shopyparty.com/?utm_source=social-retail-post&quot;&gt;shopyparty.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://browse-party.herokuapp.com/&quot;&gt;Browse Party&lt;/a&gt;&lt;/p&gt;
 
-&lt;div style=&quot;text-align:center; &quot;&gt;
-    &lt;a href=&quot;http://www.shopyparty.com/&quot;&gt;
-      &lt;img src=&quot;https://cldup.com/4E_oWAopix.png&quot; /&gt;
-    &lt;/a&gt;
-  &lt;/div&gt;
+&lt;p&gt;Browse Party is a video chatroom that can be added to any website. After a simple signup, a website owner receives access to a dashboard that includes a code unique to them. This code can then be copy and pasted into their website where they want the Browse Party tool to appear.&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;Follow me on Instagram &lt;a href=&quot;https://www.instagram.com/ralph_maker/?hl=en&quot;&gt;@ralph_maker&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Dashboard Example 👇&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cldup.com/yzIAsoKGeH.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Contact me if you’d like to add Browse Party to your site!&lt;/p&gt;
 </description>
         <pubDate>Tue, 16 May 2017 00:00:00 +0100</pubDate>
         <link>http://localhost:4000/post/2017-5-16-social-retail/</link>

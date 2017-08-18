@@ -1,11 +1,13 @@
 ---
 layout: page
 title: Feature Build
-thumbnail-path: "https://cldup.com/SEd1MOUqmK.gif"
+thumbnail-path: "https://cldup.com/TveNyDDJ8X.gif"
 short-description: Add a tracking feature to a finance app.
 short-description-line2: ""
 short-description-line3: "View Project Details"
 ---
+
+<div style="text-align:center; "><img width="300px" src ="https://cldup.com/K2TecnNImq.gif" /></div>
 
 
 # Finimize Challenge
@@ -67,7 +69,7 @@ To implement a more attractive input screen, I want to give the user a small fee
 
 I created this animation using [Framer](https://framer.com/) connected to Sketch.  
 
-![](https://cldup.com/SEd1MOUqmK.gif)
+![](https://cldup.com/K2TecnNImq.gif)
 
 You can interact with the animation [here](https://framer.cloud/ZUeZj/).
 
@@ -76,14 +78,6 @@ You can interact with the animation [here](https://framer.cloud/ZUeZj/).
 ### Feature Role Out
 
 🔴 Notification on the goal should allow for the majority of feature discovery and interaction. It also might be nice to have an Intercom notification of the visual tracking feature once a user hits the /goals page.
-
-### Adding To The Feature
-
-The current tracking feature doesn't allow a "reminder to save money" button. I like this feature in the /goals page as it allows a user to continue with the product but encourages them to come back at a later date. I would explore adding this to the feature.
-
-![](https://cldup.com/UryOoGq8Eu.png)
-
-This would email the user encouraging them to transfer the money and come to the app to update/review their results.
 
 ### User Follow-Up On Feature
 

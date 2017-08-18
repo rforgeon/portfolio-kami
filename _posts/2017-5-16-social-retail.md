@@ -39,16 +39,22 @@ According to [Dresser](http://dressertheapp.com/blog/2016/09/01/do-you-prefer-sh
 According to the YouNeedaBudget survey, 64% of adults said they end up spending more money when they shop with friends.
 
 
-This makes me curious about social retail, so I built an app to test social retail behavior with my own form of a digital shopping mall:
+This makes me curious about social retail, so I built an app that can be added to e-commerce sites to test social retail behavior:
 
-[shopyparty.com](http://www.shopyparty.com/?utm_source=social-retail-post)
+[Browse Party](https://browse-party.herokuapp.com/)
 
-  <div style="text-align:center; ">
-    <a href='http://www.shopyparty.com/'>
-      <img src ="https://cldup.com/4E_oWAopix.png" />
-    </a>
-  </div>
+Browse Party is a video chatroom that can be added to any website. After a simple signup, a website owner receives access to a dashboard that includes a code unique to them. This code can then be copy and pasted into their website where they want the Browse Party tool to appear.
+
 
 <br>
 
-Follow me on Instagram [@ralph_maker](https://www.instagram.com/ralph_maker/?hl=en)
+
+Dashboard Example 👇
+
+![](https://cldup.com/yzIAsoKGeH.png)
+
+
+
+<br>
+
+Contact me if you'd like to add Browse Party to your site!

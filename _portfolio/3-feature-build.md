@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Feature Build
-thumbnail-path: "https://cldup.com/TveNyDDJ8X.gif"
+thumbnail-path: "https://cldup.com/1_D1R6xafv.gif"
 short-description: Add a tracking feature to a finance app.
 short-description-line2: ""
 short-description-line3: "View Project Details"
